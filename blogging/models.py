@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -24,3 +25,11 @@ class Category(models.Model):
     
     class Meta:
         verbose_name_plural = 'Categories'
+
+class CategoryInline (admin.TabularInline):
+    model = Category
+
+class PostInline (admin.ModelAdmin):
+    inlines = [
+        CategoryInline,
+    ]
